@@ -1,6 +1,6 @@
 # Interview-Cake
 
-**Step 1 is to scope the project**
+## Step 1 is to scope the project ##
 
 **Since it's an API, do we need authentication or user accounts or developer keys?**
 no let's leave it open to start
