@@ -26,5 +26,26 @@ function getMaxProfit(array){
   }
   return max;
 }
+//this approach has a run time of O (n ^2)
+console.log('best rofit ===', getMaxProfit(stockPricesYesterday));
 
-console.log('best profile ===', getMaxProfit(stockPricesYesterday));
+
+function getMaxProfit2(array){
+  //let assume the first element is the minimum
+  let minPrice = array[0];
+  let maxProfit = 0;
+
+  for(let i = 0; i < array.length; i++){
+    let current = array[i];
+    minPrice = Math.min(current, minPrice);
+
+    let potentialProfit = current - minPrice;
+
+    if(potentialProfit > maxProfit) {
+      maxProfit = potentialProfit;
+    }
+  }
+  return maxProfit;
+}
+
+console.log('best profit with O(n) solution =', getMaxProfit2(stockPricesYesterday));
