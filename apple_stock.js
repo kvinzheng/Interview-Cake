@@ -49,3 +49,30 @@ function getMaxProfit2(array){
 }
 
 console.log('best profit with O(n) solution =', getMaxProfit2(stockPricesYesterday));
+
+// We decided to return a negative profit if the price decreases all day and we can't make any money. We could have thrown an exception instead, but returning the negative profit is cleaner, makes our function less opinionated, and ensures we don't lose information.
+
+let testArr2 = [ 9,6,5,4,2,1];
+
+function getMaxProfit3(array){
+  //let assume the first element is the minimum
+  let minPrice = array[0];
+  //start at the second (index 1) time
+  // we can't sell at the first time, since we must buy first,
+  let maxProfit = array[1] - array[0];
+
+  for(let i = 1; i < array.length; i++) {
+    let current = array[i];
+    let potentialProfit = current - minPrice;
+
+    if(potentialProfit > maxProfit) {
+      maxProfit = potentialProfit;
+    }
+
+    minPrice = Math.min(current, minPrice);
+  }
+  return maxProfit;
+}
+// O(n) time and O(1)O(1) space. We only loop through the array once.
+
+console.log('negative profit', getMaxProfit3(testArr2));
