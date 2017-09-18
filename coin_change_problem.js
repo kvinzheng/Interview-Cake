@@ -8,18 +8,16 @@
 // 4. 2¢, 2¢
 
 function changePossibilitiesTopDown(amountLeft, denominations, currentIndex) {
-  if (amountLeft === 0) {
-    return 1;
-  }
+  if(amountLeft === 0) return 1;
 
-  if (amountLeft < 0) {
+  if(amountLeft < 0 ) {
     return 0;
   }
 
   let nCombos = 0;
 
-  for (let i = currentIndex; i < denominations.length; i++) {
-    nCombos = nCombos + changePossibilitiesTopDown(amountLeft - denominations[i], denominations, i)
+  for(let i = currentIndex; i < denominations.length; i++) {
+    nCombos += changePossibilitiesTopDown(amountLeft - denominations[i], denominations, i);
   }
   return nCombos;
 }
